@@ -35,7 +35,10 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    curl localhost
+                    until curl -sSf http://localhost > dev>null; do
+                        sleep 1
+                    done
+                    curl -v http://localhost
                     '''
                 }
             }
